@@ -1,5 +1,10 @@
 import { Text } from "react-native";
+import { BlueGradientLayout } from "../../layouts/BlueGradientLayout";
 
 export function HomeScreen() {
-  return <Text>Home Screen</Text>;
+  return (
+    <BlueGradientLayout>
+      <Text>Home Screen</Text>
+    </BlueGradientLayout>
+  );
 }
