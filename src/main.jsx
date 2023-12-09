@@ -5,6 +5,7 @@ import { HomeScreen } from "./pages/HomeScreen";
 import { AuthProvider } from "./contexts/AuthContext";
 import { MainScreen } from "./pages/MainScreen";
 import { RecargarScreen } from "./pages/RecargarScreen";
+import { RutasScreen } from "./pages/RutasScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ function Main() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="Recargar" component={RecargarScreen} />
+          <Stack.Screen name="Rutas" component={RutasScreen} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>

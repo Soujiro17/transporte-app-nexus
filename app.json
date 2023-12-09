@@ -11,13 +11,20 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "config": {
+        "googleMapsApiKey": "AIzaSyD6DFyoBw0ewWSaa-ikj2g0iijX5n4dqXw"
+      },
       "supportsTablet": true
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyD6DFyoBw0ewWSaa-ikj2g0iijX5n4dqXw"
+        },
+        "permissions": ["ACCESS_FINE_LOCATION"]
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

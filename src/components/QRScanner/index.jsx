@@ -1,46 +1,92 @@
 // Importaciones necesarias
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Alert } from "react-native";
-import QRCodeScanner from "react-native-qrcode-scanner";
+import React, { useEffect, useState } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
 
-const QRScannerApp = () => {
-  const [scanResult, setScanResult] = useState("");
+export function QRScanner() {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
+  const [text, setText] = useState("Not yet scanned");
 
-  // Función que se llama cuando se escanea un código QR
-  const onSuccess = (e) => {
-    setScanResult(e.data);
-    Alert.alert("Código QR Escaneado", e.data, [{ text: "OK" }]);
+  const askForCameraPermission = () => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    })();
   };
 
+  // Request Camera Permission
+  useEffect(() => {
+    askForCameraPermission();
+  }, []);
+
+  // What happens when we scan the bar code
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    setText(data);
+    console.log("Type: " + type + "\nData: " + data);
+  };
+
+  // Check permissions and return the screens
+  if (hasPermission === null) {
+    return (
+      <View style={styles.container}>
+        <Text>Requesting for camera permission</Text>
+      </View>
+    );
+  }
+  if (hasPermission === false) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ margin: 10 }}>No access to camera</Text>
+        <Button
+          title={"Allow Camera"}
+          onPress={() => askForCameraPermission()}
+        />
+      </View>
+    );
+  }
+
+  // Return the View
   return (
     <View style={styles.container}>
-      <QRCodeScanner
-        onRead={onSuccess}
-        topContent={
-          <Text style={styles.centerText}>Escanea un código QR.</Text>
-        }
-        bottomContent={
-          scanResult ? (
-            <Text style={styles.centerText}>Resultado: {scanResult}</Text>
-          ) : null
-        }
-      />
+      <View style={styles.barcodebox}>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={{ height: 400, width: 400 }}
+        />
+      </View>
+      <Text style={styles.maintext}>{text}</Text>
+
+      {scanned && (
+        <Button
+          title={"Scan again?"}
+          onPress={() => setScanned(false)}
+          color="tomato"
+        />
+      )}
     </View>
   );
-};
+}
 
-// Estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    backgroundColor: "#fff",
+    alignItems: "center",
     justifyContent: "center",
   },
-  centerText: {
-    fontSize: 18,
-    padding: 32,
-    color: "#777",
+  maintext: {
+    fontSize: 16,
+    margin: 20,
+  },
+  barcodebox: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 300,
+    width: 300,
+    overflow: "hidden",
+    borderRadius: 30,
+    backgroundColor: "tomato",
   },
 });
-
-export default QRScannerApp;
