@@ -2,10 +2,11 @@ import { Image, Pressable, View } from "react-native";
 import { Paragraph } from "../../components/Paragraph";
 import styles from "./styles";
 import { MainHeader } from "../../components/MainHeader";
+import { menu } from "../../data/menu";
 
-export function MenuShortcut({ children, icon }) {
+export function MenuShortcut({ children, icon, onPress }) {
   return (
-    <Pressable style={styles.menuItem}>
+    <Pressable onPress={onPress} style={styles.menuItem}>
       {icon && <Image style={styles.itemImg} source={icon} />}
       <Paragraph
         fontWeight="bold"
@@ -20,7 +21,7 @@ export function MenuShortcut({ children, icon }) {
   );
 }
 
-export function MainScreen() {
+export function MainScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <MainHeader />
@@ -29,18 +30,15 @@ export function MainScreen() {
           Escanea este código QR para pagar tu próximo pasaje.
         </Paragraph>
         <View style={styles.menu}>
-          <MenuShortcut icon={require("../../../assets/billete.png")}>
-            Recargar dinero
-          </MenuShortcut>
-          <MenuShortcut icon={require("../../../assets/registros.png")}>
-            Movimientos
-          </MenuShortcut>
-          <MenuShortcut icon={require("../../../assets/bus.png")}>
-            Buses
-          </MenuShortcut>
-          <MenuShortcut icon={require("../../../assets/perfil.png")}>
-            Perfil
-          </MenuShortcut>
+          {menu.map((menuItem, index) => (
+            <MenuShortcut
+              key={index}
+              onPress={() => navigation.navigate(menuItem.path)}
+              icon={menuItem.icon}
+            >
+              {menuItem.text}
+            </MenuShortcut>
+          ))}
         </View>
       </View>
     </View>

@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen } from "./pages/HomeScreen";
 import { AuthProvider } from "./contexts/AuthContext";
 import { MainScreen } from "./pages/MainScreen";
+import { RecargarScreen } from "./pages/RecargarScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ function Main() {
         >
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="Recargar" component={RecargarScreen} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>
