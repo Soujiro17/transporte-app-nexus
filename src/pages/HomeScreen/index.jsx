@@ -1,15 +1,20 @@
 import { BlueGradientLayout } from "../../layouts/BlueGradientLayout";
-import { Title } from "../../components/Title";
 import { View } from "react-native";
 import styles from "./styles";
 import { Logo } from "../../components/Logo";
+import { LoginForm } from "../../components/LoginForm";
+import { ExpandInputLayout } from "../../layouts/ExpandInputLayout";
 
 export function HomeScreen() {
   return (
     <BlueGradientLayout>
       <View style={styles.container}>
-        <Logo />
-        <Title>Home Screen</Title>
+        <ExpandInputLayout>
+          <View style={styles.wrapper}>
+            <Logo />
+            <LoginForm />
+          </View>
+        </ExpandInputLayout>
       </View>
     </BlueGradientLayout>
   );

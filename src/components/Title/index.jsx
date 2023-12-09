@@ -6,12 +6,14 @@ export function Title({
   style,
   size = 40,
   color = "#fff",
+  textAlign,
   ...props
 }) {
   const customStyles = {
     color,
     fontSize: size,
     fontFamily: "BebasRegular",
+    textAlign,
   };
 
   return (
