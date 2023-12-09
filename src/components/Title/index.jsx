@@ -13,7 +13,6 @@ export function Title({
   const customStyles = {
     color,
     fontSize: size,
-    fontFamily: "BebasRegular",
     textAlign,
     fontWeight,
   };

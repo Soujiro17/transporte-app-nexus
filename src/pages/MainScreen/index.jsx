@@ -32,8 +32,14 @@ export function MainScreen() {
           <MenuShortcut icon={require("../../../assets/billete.png")}>
             Recargar dinero
           </MenuShortcut>
-          <MenuShortcut icon={require("../../../assets/bus.png")}>
+          <MenuShortcut icon={require("../../../assets/registros.png")}>
             Movimientos
+          </MenuShortcut>
+          <MenuShortcut icon={require("../../../assets/bus.png")}>
+            Buses
+          </MenuShortcut>
+          <MenuShortcut icon={require("../../../assets/perfil.png")}>
+            Perfil
           </MenuShortcut>
         </View>
       </View>
