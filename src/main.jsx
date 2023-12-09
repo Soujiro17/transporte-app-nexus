@@ -6,6 +6,7 @@ import * as Font from "expo-font";
 import { HomeScreen } from "./pages/HomeScreen";
 import { AuthProvider } from "./contexts/AuthContext";
 import BEBAS_FONT from "../assets/fonts/Bebas-Regular.ttf";
+import { MainScreen } from "./pages/MainScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,7 @@ function Main() {
           }}
         >
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Main" component={MainScreen} />
         </Stack.Navigator>
       </AuthProvider>
     </NavigationContainer>

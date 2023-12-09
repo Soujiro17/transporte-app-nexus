@@ -16,6 +16,7 @@ export function HomeScreen() {
           </View>
         </ExpandInputLayout>
       </View>
+      <View style={styles.triangle}></View>
     </BlueGradientLayout>
   );
 }

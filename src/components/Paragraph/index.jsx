@@ -5,12 +5,18 @@ export function Paragraph({
   children,
   textAlign,
   style,
+  size,
   color = "#fff",
+  fontWeight,
+  width,
   ...props
 }) {
   const customStyle = {
     textAlign,
     color,
+    fontSize: size,
+    fontWeight,
+    width,
   };
 
   return (
