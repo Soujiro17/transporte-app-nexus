@@ -18,7 +18,9 @@ export function LoginForm() {
   const handlePassword = (v) => setPassword(v);
 
   const onSubmit = () => {
-    navigation.replace("Main");
+    navigation.navigate("BottomTabs", {
+      screen: "Main",
+    });
   };
 
   return (

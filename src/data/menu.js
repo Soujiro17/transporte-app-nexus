@@ -5,7 +5,7 @@ export const menu = [
     path: "Recargar",
   },
   {
-    text: "Mis movimientos",
+    text: "Mis rutas",
     icon: require("../../assets/registros.png"),
     path: "Movimientos",
   },

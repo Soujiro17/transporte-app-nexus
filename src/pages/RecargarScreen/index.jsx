@@ -6,8 +6,13 @@ import { BlueGradientLayout } from "../../layouts/BlueGradientLayout";
 import styles from "./styles";
 import { Title } from "../../components/Title";
 import { Line } from "../../components/Line";
+import { notifyMessage } from "../../utils/notifyMessage";
 
 export function RecargarScreen() {
+  const onPress = () => {
+    notifyMessage("Recarga realizada con éxito");
+  };
+
   return (
     <View style={styles.container}>
       <Title textAlign="center">Bienvenido al área de recarga</Title>
@@ -24,7 +29,9 @@ export function RecargarScreen() {
         <Input placeholder="Ex: 9990" />
         <Paragraph size={18}>Ingresa tu email</Paragraph>
         <Input placeholder="Ex: aaa@gmail.com" />
-        <Button style={{ width: "100%" }}>Recargar</Button>
+        <Button onPress={onPress} style={{ width: "100%" }}>
+          Recargar
+        </Button>
       </View>
       <View
         style={[
