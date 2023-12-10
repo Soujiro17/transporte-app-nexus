@@ -58,7 +58,5 @@ export function AuthProvider({ children }) {
     });
   }, []);
 
-  console.log(saldo);
-
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

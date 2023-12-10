@@ -3,11 +3,10 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 50,
   },
 
   main: {
-    flex: 1,
-    paddingTop: 120,
     paddingHorizontal: 20,
   },
 
@@ -15,7 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    marginTop: 50,
     rowGap: 20,
   },
 

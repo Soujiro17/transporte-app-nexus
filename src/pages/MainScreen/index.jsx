@@ -1,4 +1,4 @@
-import { Image, Pressable, View } from "react-native";
+import { Image, Pressable, ScrollView, View } from "react-native";
 import { Paragraph } from "../../components/Paragraph";
 import styles from "./styles";
 import { MainHeader } from "../../components/MainHeader";
@@ -23,12 +23,10 @@ export function MenuShortcut({ children, icon, onPress }) {
 
 export function MainScreen({ navigation }) {
   return (
+    // <ScrollView>
     <View style={styles.container}>
       <MainHeader />
       <View style={styles.main}>
-        <Paragraph size={15} fontWeight="bold" textAlign="center" color="#000">
-          Escanea este código QR para pagar tu próximo pasaje.
-        </Paragraph>
         <View style={styles.menu}>
           {menu.map((menuItem, index) => (
             <MenuShortcut
@@ -42,5 +40,6 @@ export function MainScreen({ navigation }) {
         </View>
       </View>
     </View>
+    // </ScrollView>
   );
 }

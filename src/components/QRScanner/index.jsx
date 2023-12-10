@@ -1,7 +1,8 @@
 // Importaciones necesarias
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, Vibration } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { cobrarPasaje } from "../../../lib/pasaje";
 
 export function QRScanner() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -21,10 +22,19 @@ export function QRScanner() {
   }, []);
 
   // What happens when we scan the bar code
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = async ({ type, data }) => {
+    console.log("Type: " + type + "\nData: " + data);
+    Vibration.vibrate();
     setScanned(true);
     setText(data);
-    console.log("Type: " + type + "\nData: " + data);
+
+    if (type === 256) {
+      try {
+        await cobrarPasaje();
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   // Check permissions and return the screens
@@ -61,7 +71,10 @@ export function QRScanner() {
       {scanned && (
         <Button
           title={"Scan again?"}
-          onPress={() => setScanned(false)}
+          onPress={() => {
+            setScanned(false);
+            setText("");
+          }}
           color="tomato"
         />
       )}
