@@ -1,4 +1,5 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import { getUser } from "../../lib/user";
 
 export const AuthContext = createContext({
   auth: { access: "" },
@@ -6,7 +7,7 @@ export const AuthContext = createContext({
   edad: 0,
   beneficios: 0,
   rut: "",
-  saldo: 9990,
+  saldo: 0,
   setAuth: () => {},
   setNombre: () => {},
   setEdad: () => {},
@@ -50,6 +51,14 @@ export function AuthProvider({ children }) {
     }),
     [auth, saldo]
   );
+
+  useEffect(() => {
+    getUser().then((res) => {
+      fillState(res.usuario);
+    });
+  }, []);
+
+  console.log(saldo);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

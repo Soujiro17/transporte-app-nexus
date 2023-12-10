@@ -6,23 +6,18 @@ import { Paragraph } from "../Paragraph";
 import { Anchor } from "../Anchor";
 import { Button } from "../Button";
 import { useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
 import styles from "./styles";
-import { user } from "../../data/user";
 
 export function LoginForm() {
   const [rut, setRut] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setAuth, fillState } = useAuth();
   const navigation = useNavigation();
 
   const handleRut = (v) => setRut(v);
   const handlePassword = (v) => setPassword(v);
 
   const onSubmit = () => {
-    setAuth({ access: "sldfjoijrogierjogijeorg" });
-    fillState(user);
     navigation.replace("Main");
   };
 
