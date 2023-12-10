@@ -25,7 +25,7 @@ export function RutasScreen() {
   }, []);
 
   return (
-    <Map>
+    <Map zoom={0.2}>
       <CustomMarker
         description="Recorrido 1"
         title="Micro 1"

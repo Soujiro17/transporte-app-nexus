@@ -15,8 +15,8 @@ export const menu = [
     path: "Rutas",
   },
   {
-    text: "Mi perfil",
-    icon: require("../../assets/perfil.png"),
-    path: "Perfil",
+    text: "Reclamos",
+    icon: require("../../assets/warning.png"),
+    path: "Reclamos",
   },
 ];

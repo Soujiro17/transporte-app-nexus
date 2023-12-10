@@ -1,7 +1,8 @@
-import { Image, Pressable, ScrollView, View } from "react-native";
+import { Image, Pressable, View } from "react-native";
 import { Paragraph } from "../../components/Paragraph";
 import styles from "./styles";
 import { MainHeader } from "../../components/MainHeader";
+import { Anchor } from "../../components/Anchor";
 import { menu } from "../../data/menu";
 
 export function MenuShortcut({ children, icon, onPress }) {
@@ -39,6 +40,9 @@ export function MainScreen({ navigation }) {
           ))}
         </View>
       </View>
+      <Anchor style={styles.admin} to={"/Admin"}>
+        Admin
+      </Anchor>
     </View>
     // </ScrollView>
   );

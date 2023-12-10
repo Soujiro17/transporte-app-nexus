@@ -38,7 +38,7 @@ export function MainHeader() {
             <Line />
             <View style={styles.qrWrapper}>
               <QRCode
-                value={rut}
+                value={rut || ""}
                 logo={LogoApp}
                 size={screenWidth - 150}
                 backgroundColor="#fff"

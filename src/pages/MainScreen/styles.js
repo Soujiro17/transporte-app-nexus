@@ -41,6 +41,15 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     width: "20%",
   },
+
+  admin: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    width: 70,
+    height: 50,
+    opacity: 0,
+  },
 });
 
 export default styles;

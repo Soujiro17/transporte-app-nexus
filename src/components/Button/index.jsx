@@ -8,6 +8,7 @@ export function Button({
   onPress,
   width,
   style,
+  paraphStyle,
   ...props
 }) {
   const customStyle = {
@@ -15,12 +16,12 @@ export function Button({
   };
 
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={[styles.button, style]} onPress={onPress}>
       <Paragraph
         textAlign="center"
         color="#000"
         size={size}
-        style={[customStyle, style]}
+        style={[customStyle, paraphStyle]}
         {...props}
       >
         {children}
